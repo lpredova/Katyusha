@@ -1,11 +1,11 @@
 __author__ = 'lovro'
 # Naming convention https://www.python.org/dev/peps/pep-0008/
 import sys
-
-from validator import Validator
-from soapfuzz import SoapFuzzer
-from restfuzz import RestFuzzer
 import webbrowser
+
+from lib.validator import Validator
+from lib.soapfuzz import SoapFuzzer
+from lib.restfuzz import RestFuzzer
 
 
 class MainMenu:
@@ -66,11 +66,11 @@ class MainMenu:
                 "REST", "SOAP"
             )
 
-            if protocole == 1:
+            if protocole == '1':
                 rest = RestFuzzer()
                 rest.start_fuzzing()
 
-            elif protocole == 2:
+            elif protocole == '2':
                 soap = SoapFuzzer()
                 soap.start_fuzzing()
             else:
