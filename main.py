@@ -5,6 +5,7 @@ import sys
 from validator import Validator
 from soapfuzz import SoapFuzzer
 from restfuzz import RestFuzzer
+import webbrowser
 
 
 class MainMenu:
@@ -43,6 +44,10 @@ class MainMenu:
         print menu.delimiter_line
 
     @staticmethod
+    def play_me_something():
+        webbrowser.open("https://www.youtube.com/watch?v=Cydzolb0eIs", 2)
+
+    @staticmethod
     def confirm_quit():
         options = "Are you sure that you want to quit:(y/n)\n"
         result = raw_input(options)
@@ -75,6 +80,7 @@ class MainMenu:
             MainMenu.error_message("Invalid URL !")
             return
 
+
 if __name__ == '__main__':
     menu = MainMenu()
 
@@ -91,6 +97,9 @@ if __name__ == '__main__':
 
         elif mode == '2':
             MainMenu.confirm_quit()
+
+        elif mode == 'sssr':
+            MainMenu.play_me_something()
 
         else:
             print "Hey hey, let's focus here,shall we?"
