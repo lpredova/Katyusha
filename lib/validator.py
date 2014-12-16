@@ -1,13 +1,11 @@
 __author__ = 'lovro'
 
 import urllib2
-import httplib
 
 
 class Validator:
     def __init__(self):
         pass
-
 
     def __validate_url(self, url):
         try:
@@ -19,7 +17,6 @@ class Validator:
 
         except urllib2.URLError, ex:
             return False  # URL don't seem to be alive
-
 
     def validate_url(self, url):
 
