@@ -1,10 +1,17 @@
 'use strict';
 
 
-var katyusha = angular.module('KatyushaApp', []);
+var katyusha = angular.module('KatyushaApp', ['ui.bootstrap']);
 
 katyusha.controller('MainCtrl', function ($scope, dataProvider) {
     $scope.test = "test"
+    $scope.oneAtATime = true;
+
+    $scope.status = {
+        isFirstOpen: true,
+        isFirstDisabled: false
+    };
+
 
     dataProvider.fetch()
         .then(function (data) {
@@ -18,14 +25,9 @@ katyusha.controller('MainCtrl', function ($scope, dataProvider) {
 
 katyusha.factory('dataProvider', function ($q, $timeout, $http, $location) {
     var data = {
-        fetch: function (callback) {
+        fetch: function () {
             var deferred = $q.defer();
             $timeout(function () {
-                //$http.get('results/test.json').success(function (data) {
-                //console.log($location.search)
-                //var result = $location.search()
-
-                //console.log(result)
 
                 $http.get('results/' + $location.path()).success(function (data) {
                     deferred.resolve(data);

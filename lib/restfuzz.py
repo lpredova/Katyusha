@@ -34,11 +34,12 @@ class RestFuzzer():
         threading.Thread(target=server.serve()).start()
 
         try:
-            urllib.quote_plus('$#@=?%^Q^$')
-
             webbrowser.open('http://localhost:8080/#/' + self.result_file, 2)
         except:
             print 'Find results at:\n http://localhost:8080/#/' + self.result_file
+
+        return 0
+
 
     def save_data(self, result):
         ts = time.time()
@@ -62,9 +63,8 @@ class RestFuzzer():
         for x in range(0, 5):
             try:
                 h = httplib2.Http(".cache")
-                resp, content = h.request('http://localhost:8000/api/v1/locations', "GET")
-
-                item = {'id': x, 'response': resp, 'content': content, 'length': len(content)}
+                resp, content = h.request('http://localhost:8000/api/v1/locations', self.method)
+                item = {'status': False, 'id': x, 'response': resp, 'content': content, 'length': len(content)}
                 result.append(item)
 
             except:
