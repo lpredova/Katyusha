@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
 
-          <p>If everything is ok you should see {{test}} variable</p>
+        <p>If everything is ok you should see {{test}} variable</p>
           <pre>
                  _   __      _                   _           
                 | | / /     | |                 | |          
@@ -38,23 +38,38 @@
                 <accordion-group is-open=item.status>
                     <accordion-heading>
                         <span>
-                            <span>Id: {{item.id}} </span>
-                            <span>Length:{{item.length}}</span>
+                            <span >Id: {{item.id}} </span>
+                                                        &nbsp;
+                            <span >Length:{{item.length}}</span>
+                                                        &nbsp;
+
+                            <span >Response Code:{{item.code}}</span>
+                                                        &nbsp;
+                            <span >Request:{{item.request}}</span>
+
                         </span>
                         <i class="pull-right glyphicon"
                            ng-class="{'glyphicon-chevron-down': item.status, 'glyphicon-chevron-right': !item.status}">
                         </i>
-                    </accordion-heading>
 
-                    <div><b>Status:</b>{{item.response.status}}</div>
-                    <div><b>Content-location:</b>{{item.response ["content-location"]}}</div>
-                    <div class="cookie"><b>Cookie:</b>{{item.response ["set-cookie"]}}</div>
-                    <div><b>X powered by:</b>{{item.response ["x-powered-by"] }}</div>
-                    <div><b>Host:</b>{{item.response.host}}</div>
-                    <div><b>Allow:</b>{{item.response.connection}}</div>
-                    <div><b>Cache control:</b>{{item.response ["cache-control"]}}</div>
-                    <div><b>Date:</b>{{item.response.date}}</div>
-                    <div><b>Content type:</b>{{item.response ["content-type"]}}</div>
+                    </accordion-heading>
+                    <h1>Headers</h1>
+                    <hr>
+                    <div><b>Status:</b>{{item.code}}</div>
+                    <div><b>Content-location:</b>{{item.headers ["content-location"]}}</div>
+                    <div class="cookie"><b>Cookie:</b>{{item.headers ["set-cookie"]}}</div>
+                    <div><b>X powered by:</b>{{item.headers ["x-powered-by"] }}</div>
+                    <div><b>Host:</b>{{item.headers.host}}</div>
+                    <div><b>Allow:</b>{{item.headers.connection}}</div>
+                    <div><b>Cache control:</b>{{item.headers ["cache-control"]}}</div>
+                    <div><b>Date:</b>{{item.headers.date}}</div>
+                    <div><b>Content type:</b>{{item.headers ["content-type"]}}</div>
+                    <h1>Raw response</h1>
+                    <p>You can view html code by pasting it into : <a href="http://plnkr.co/">Plunker</a></p>
+                    <div>
+                        {{item.response}}
+                    </div>
+
 
                 </accordion-group>
             </accordion>

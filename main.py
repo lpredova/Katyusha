@@ -25,7 +25,7 @@ class MainMenu:
                 )
 
                 if protocole == '1':
-                    rest = RestFuzzer()
+                    rest = RestFuzzer(self.api_url)
                     rest.start_fuzzing()
 
                 elif protocole == '2':
