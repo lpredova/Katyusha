@@ -18,7 +18,8 @@ class PayloadReader:
         fuzzVectors = []
 
         for line in fuzzFile:
-            fuzzVectors.append(line.strip())
+            if(line.startswith('#') != 'true'):
+                fuzzVectors.append(line.strip())
 
         fuzzFile.close()
         return fuzzVectors
