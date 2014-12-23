@@ -5,6 +5,7 @@ __author__ = 'lovro'
 from abc import ABCMeta
 from helpers import Helper
 from localserver import Server
+from payloadreader import PayloadReader
 
 import requests
 import webbrowser
@@ -29,13 +30,18 @@ class Fuzzer():
         result = []
 
         print "Fuzzing started...Please wait..."
+
+        fuzz_vector = self.get_fuzz_vector()
+        print fuzz_vector
+
         # TODO this loop should go through entire results list and query for each param 0-5 is just for testing
         for x in range(0, 5):
             try:
+
                 if self.method == 'GET':
                     r = requests.get(self.api_url, data=json.dumps(self.params))
-                    print r.headers
-                    print r.cookies
+                    #print r.headers
+                    #print r.cookies
 
                 elif self.method == 'POST':
                     r = requests.post(self.api_url, data=json.dumps(self.params))
@@ -57,10 +63,32 @@ class Fuzzer():
                                },
                                'length': len(r.text)})
             except:
-                result.append("error")
+                result.append({'request': 'rekvest',
+                               'status': 'error',
+                               'id': 'error',
+                               'code': r.status_code,
+                               'response': 'error',
+                               'headers': {
+                                   'x-powered-by': 'error',
+                                   'set-cookie': 'error',
+                                   'connection': 'error',
+                                   'host': 'error',
+                                   'cache-control': 'error',
+                                   'date': 'error',
+                                   'content-type': 'error'
+                               },
+                               'length': 0})
+        ###Printig params
+        print self.params
+
 
         print "Fuzzing done..."
         return result
+
+    def get_fuzz_vector(self):
+        reader = PayloadReader()
+        strings = reader.get_fuzz_strings()
+        return strings
 
     def save_data(self, result):
         ts = time.time()

@@ -5,7 +5,6 @@ from fuzzer import Fuzzer
 
 
 class RestFuzzer(Fuzzer):
-
     def __init__(self, url):
         self.api_url = url
         Fuzzer.__init__(self)
@@ -23,7 +22,29 @@ class RestFuzzer(Fuzzer):
     # TODO - adding multiple params and marking which params we want to attack
     def insert_params(self):
         print "inserting params"
-        self.params = {'user': 'admin', 'password': 'admin'}
+        more = True
+
+        while more:
+
+            Helper.delimiter_line()
+            key = raw_input('Name of the parametar you want to fuzz :')
+            fuzz = raw_input('Do you want to fuzz this parameter (Y/N):')
+            if fuzz == 'Y' or fuzz == 'y' or fuzz == 'yes':
+                param = {key: 1}
+            else:
+                param = {key: 1}
+
+            self.params.append(param)
+
+            m = raw_input('Do you want to add more parameters (Y/N) ? ')
+            if m == 'Y' or m == 'y' or m == 'yes':
+                more = True
+            else:
+                more = False
+
+
+        #self.params = {'user': 'admin', 'password': 'admin'}
+        #self.params = {'user': 'admin', 'password': 'admin'}
 
         return 0
 

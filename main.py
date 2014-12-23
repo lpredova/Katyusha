@@ -38,7 +38,6 @@ class MainMenu:
                 Helper.error_message("Invalid URL !")
 
 
-
 if __name__ == '__main__':
     menu = MainMenu()
 

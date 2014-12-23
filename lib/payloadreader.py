@@ -1,32 +1,30 @@
 __author__ = 'Milan'
+import os
 
-class PayloadReader:
 
-    _filePath = 'data/MySQL.fuzz.txt'
+class PayloadReader():
+    filePath = "/lib/data/MySQL.fuzz.txt"
 
     def __init__(self):
         pass
 
-    def setFilePath(self, path):
-        self._filePath = path
+    def set_file_path(self, path):
+        self.filePath = path
 
-    def getFilePath(self):
-        return self._filePath
+    def get_file_path(self):
+        return self.filePath
 
-    def getFuzzStrings(self):
-        fuzzFile = open(self._filePath, "r")
-        fuzzVectors = []
+    def get_current_file_path(self):
+        return os.path.abspath(os.curdir)
 
-        for line in fuzzFile:
-            if(line.startswith('#') != 'true'):
-                fuzzVectors.append(line.strip())
+    def get_fuzz_strings(self):
+        fuzz_file = open(self.get_current_file_path()
+                         + self.filePath, "r")
+        fuzz_vectors = []
 
-        fuzzFile.close()
-        return fuzzVectors
+        for line in fuzz_file:
+            if line.startswith('#') != 'true':
+                fuzz_vectors.append(line.strip())
 
-
-reader = PayloadReader()
-
-strings = reader.getFuzzStrings()
-
-print strings
+        fuzz_file.close()
+        return fuzz_vectors
