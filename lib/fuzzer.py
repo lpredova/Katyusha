@@ -31,6 +31,8 @@ class Fuzzer():
         pass
 
     def send_requests(self):
+
+        response_time = ""
         result = []
         print "Fuzzing started..."
 
@@ -41,14 +43,21 @@ class Fuzzer():
 
             try:
                 if self.method == 'GET':
+                    start_request = time.time()
                     r = requests.get(self.api_url, data=json.dumps(fuzz_request))
+                    end_request = time.time()
+                    response_time = format(end_request - start_request, '.4f')
 
                 elif self.method == 'POST':
+                    start_request = time.time()
                     r = requests.post(self.api_url, data=json.dumps(fuzz_request))
+                    end_request = time.time()
+                    response_time = format(end_request - start_request, '.4f')
 
                 result.append({'request': fuzz_request,
                                'status': False,
                                'id': self.request_id,
+                               'time': response_time,
                                'code': r.status_code,
                                'response': r.text,
                                'headers': {
@@ -67,6 +76,7 @@ class Fuzzer():
                 result.append({'request': fuzz_request,
                                'status': 'error',
                                'id': self.request_id,
+                               'time': response_time,
                                'code': r.status_code,
                                'response': 'error',
                                'headers': {
@@ -82,28 +92,18 @@ class Fuzzer():
                 self.request_id += 1
 
         # ##Printig params
-        print self.request_params
-
         print "Fuzzing done..."
         return result
 
     def switch_param(self, vector):
         items = {}
-        print "rekvest params original :"
-        print self.request_params
-        print "\n"
-
         for key, value in self.request_params.items():
-            print "key: "+ key + " value :" + value
-
             if key == "":
                 continue
-
             if value == 'fuzz':
                 items[key] = vector
             else:
                 items[key] = ''
-
         return items
 
     def get_fuzz_vector(self):

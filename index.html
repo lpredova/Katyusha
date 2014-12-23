@@ -44,7 +44,9 @@
                             <span >Length:{{item.length}}</span>
                                                         &nbsp;
 
-                            <span >Response Code:{{item.code}}</span>
+                            <span >Time:{{item.time}}</span>
+                                                        &nbsp;
+                            <span >HTTP Code:{{item.code}}</span>
                                                         &nbsp;
                             <span >Request:{{item.request}}</span>
 
@@ -54,8 +56,12 @@
                         </i>
 
                     </accordion-heading>
-                    <h1>Headers</h1>
+                    <h1>Request</h1>
                     <hr>
+                    <div><b>Request:</b>{{item.request}}</div>
+                    <h1>Response headers</h1>
+                    <hr>
+                    <div><b>Response time:</b>{{item.time}}</div>
                     <div><b>Status:</b>{{item.code}}</div>
                     <div><b>Content-location:</b>{{item.headers ["content-location"]}}</div>
                     <div class="cookie"><b>Cookie:</b>{{item.headers ["set-cookie"]}}</div>

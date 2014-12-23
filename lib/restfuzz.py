@@ -19,11 +19,8 @@ class RestFuzzer(Fuzzer):
                 self.method = 'POST'
                 return 0
 
-    # TODO - adding multiple params and marking which params we want to attack
     def insert_params(self):
-        print "inserting params"
         more = True
-
         while more:
 
             Helper.delimiter_line()
@@ -39,11 +36,6 @@ class RestFuzzer(Fuzzer):
                 more = True
             else:
                 more = False
-
-
-        # self.params = {'user': 'admin', 'password': 'admin'}
-        #self.params = {'user': 'admin', 'password': 'admin'}
-
         return 0
 
     # Main method in rest fuzzer class
