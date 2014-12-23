@@ -20,36 +20,35 @@ class Fuzzer():
 
     api_url = ""
     method = ""
-    params = []
+
+    request_params = {}
+    modified_request = []
+
     _result_file = ""
+    request_id = 1
 
     def __init__(self):
         pass
 
     def send_requests(self):
         result = []
-
-        print "Fuzzing started...Please wait..."
+        print "Fuzzing started..."
 
         fuzz_vector = self.get_fuzz_vector()
-        print fuzz_vector
+        for vector in fuzz_vector:
+            fuzz_request = self.switch_param(vector)
+            print fuzz_request
 
-        # TODO this loop should go through entire results list and query for each param 0-5 is just for testing
-        for x in range(0, 5):
             try:
-
                 if self.method == 'GET':
-                    r = requests.get(self.api_url, data=json.dumps(self.params))
-                    #print r.headers
-                    #print r.cookies
+                    r = requests.get(self.api_url, data=json.dumps(fuzz_request))
 
                 elif self.method == 'POST':
-                    r = requests.post(self.api_url, data=json.dumps(self.params))
+                    r = requests.post(self.api_url, data=json.dumps(fuzz_request))
 
-                # TODO ovdje u request ide array onoga sto smo pitali server
-                result.append({'request': 'array(nesto)',
+                result.append({'request': fuzz_request,
                                'status': False,
-                               'id': x,
+                               'id': self.request_id,
                                'code': r.status_code,
                                'response': r.text,
                                'headers': {
@@ -62,10 +61,12 @@ class Fuzzer():
                                    'content-type': r.headers['content-type']
                                },
                                'length': len(r.text)})
+                self.request_id += 1
+
             except:
-                result.append({'request': 'rekvest',
+                result.append({'request': fuzz_request,
                                'status': 'error',
-                               'id': 'error',
+                               'id': self.request_id,
                                'code': r.status_code,
                                'response': 'error',
                                'headers': {
@@ -78,12 +79,32 @@ class Fuzzer():
                                    'content-type': 'error'
                                },
                                'length': 0})
-        ###Printig params
-        print self.params
+                self.request_id += 1
 
+        # ##Printig params
+        print self.request_params
 
         print "Fuzzing done..."
         return result
+
+    def switch_param(self, vector):
+        items = {}
+        print "rekvest params original :"
+        print self.request_params
+        print "\n"
+
+        for key, value in self.request_params.items():
+            print "key: "+ key + " value :" + value
+
+            if key == "":
+                continue
+
+            if value == 'fuzz':
+                items[key] = vector
+            else:
+                items[key] = ''
+
+        return items
 
     def get_fuzz_vector(self):
         reader = PayloadReader()

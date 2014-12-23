@@ -30,11 +30,9 @@ class RestFuzzer(Fuzzer):
             key = raw_input('Name of the parametar you want to fuzz :')
             fuzz = raw_input('Do you want to fuzz this parameter (Y/N):')
             if fuzz == 'Y' or fuzz == 'y' or fuzz == 'yes':
-                param = {key: 1}
+                self.request_params[key] = 'fuzz'
             else:
-                param = {key: 1}
-
-            self.params.append(param)
+                self.request_params[key] = ''
 
             m = raw_input('Do you want to add more parameters (Y/N) ? ')
             if m == 'Y' or m == 'y' or m == 'yes':
@@ -43,7 +41,7 @@ class RestFuzzer(Fuzzer):
                 more = False
 
 
-        #self.params = {'user': 'admin', 'password': 'admin'}
+        # self.params = {'user': 'admin', 'password': 'admin'}
         #self.params = {'user': 'admin', 'password': 'admin'}
 
         return 0
