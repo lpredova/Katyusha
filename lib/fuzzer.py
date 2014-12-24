@@ -56,6 +56,7 @@ class Fuzzer():
 
                 result.append({'request': fuzz_request,
                                'status': False,
+                               'method': self.method,
                                'id': self.request_id,
                                'time': response_time,
                                'code': r.status_code,
@@ -75,6 +76,7 @@ class Fuzzer():
             except:
                 result.append({'request': fuzz_request,
                                'status': 'error',
+                               'method': self.method,
                                'id': self.request_id,
                                'time': response_time,
                                'code': r.status_code,
