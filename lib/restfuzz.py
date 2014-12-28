@@ -49,7 +49,7 @@ class RestFuzzer(Fuzzer):
         self.insert_params()
 
         results = self.send_requests()
-        self.save_data(results)
+        self.save_data(results, "rest")
         self.present_results()
 
 

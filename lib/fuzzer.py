@@ -13,6 +13,7 @@ import threading
 import json
 import datetime
 import time
+import os
 
 
 class Fuzzer():
@@ -113,11 +114,11 @@ class Fuzzer():
         strings = reader.get_fuzz_strings()
         return strings
 
-    def save_data(self, result):
+    def save_data(self, result, service_type):
         ts = time.time()
 
         current_time = datetime.datetime.fromtimestamp(ts).strftime('%Y_%m_%d_%H_%M_%S')
-        self._result_file = 'rest_result_' + current_time + '.json'
+        self._result_file = service_type + '_result_' + current_time + '.json'
 
         with open('results/' + self._result_file, 'w') as outfile:
             json.dump(result, outfile)
