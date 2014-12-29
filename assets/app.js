@@ -4,6 +4,8 @@
 var katyusha = angular.module('KatyushaApp', ['ui.bootstrap']);
 
 katyusha.controller('MainCtrl', function ($scope, dataProvider) {
+
+    var avg
     $scope.test = "test"
     $scope.oneAtATime = true;
 
@@ -17,25 +19,25 @@ katyusha.controller('MainCtrl', function ($scope, dataProvider) {
         .then(function (data) {
             $scope.data = data;
 
+            var no_elements = 0
+            var total = 10;
+            angular.forEach($scope.data, function(value, key) {
+                var len = parseInt(value.length)
+                if (isNaN(len)) {
+                    len=0
+                }
+                no_elements++
+                total += len
+            });
+            avg = total/no_elements
+
         }, function (err) {
             console.log("jebika")
         })
 
 
     $scope.getAvg = function(){
-        var no_elements = 1
-        var total = 10;
-        angular.forEach($scope.data, function(value, key) {
-            var len = parseInt(value.length)
-            if (isNaN(len)) {
-                len=0
-            }
-            no_elements++
-            total += len
-        });
-
-        console.log('AVG' + total/no_elements)
-        return total/no_elements
+        return avg
     }
 
 });

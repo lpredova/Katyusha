@@ -46,14 +46,15 @@ if __name__ == '__main__':
         mode = Helper.create_prompt(
             "Please choose your action",
             "Fuzz API service",
-            "Listen as Proxy",
+            "View results",
             "Quit")
 
         if mode == '1':
             menu.get_url()
 
         elif mode == '2':
-            ProxyListener.listen_communication()
+            #ProxyListener.listen_communication()
+            Helper.browse_results()
 
         elif mode == '3':
             Helper.confirm_quit()

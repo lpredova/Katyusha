@@ -33,7 +33,21 @@
                REST and SOAP fuzzer
         </pre>
 
-        <div ng-repeat="item in data | orderBy:'time' | orderBy:'length':true  " ng-class="{warnings: item.length > getAvg()}">
+            <div class="row search-form">
+                <div class="col-lg-6 col-lg-offset-3">
+                    <div class="input-group custom-search-form">
+                        <input ng-model="search.$" class="form-control" placeholder="Search for anything...">
+              <span class="input-group-btn">
+              <button class="btn btn-default" type="button">
+                  <span class="glyphicon glyphicon-search"></span>
+              </button>
+             </span>
+                    </div>
+                </div>
+            </div>
+
+        <div ng-repeat="item in data | orderBy:'time':true  | orderBy:'length':true  | filter:search:strict"
+             ng-class="{warnings: item.length > getAvg()}">
 
             <accordion close-others="oneAtATime">
                 <accordion-group is-open=item.status>

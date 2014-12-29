@@ -1,11 +1,9 @@
 __author__ = 'lovro'
 import sys
 import webbrowser
-
+import os
 
 class Helper:
-
-
     def __init__(self):
         pass
 
@@ -32,8 +30,8 @@ class Helper:
         options = "\n" + message + ":\n" \
                                    "1) " + option1 + "\n" \
                                                      "2) " + option2 + "\n" \
-                                                     "3) " + option3 + "\n" \
-                                                                       "Select:"
+                                                                       "3) " + option3 + "\n" \
+                                                                                         "Select:"
         return raw_input(options)
 
     @staticmethod
@@ -44,6 +42,11 @@ class Helper:
     @staticmethod
     def play_me_something():
         webbrowser.open("https://www.youtube.com/watch?v=Cydzolb0eIs", 2)
+
+    @staticmethod
+    def browse_results():
+        url = 'file://' + os.getcwd() + "/results/"
+        webbrowser.open(url)
 
     @staticmethod
     def confirm_quit():
