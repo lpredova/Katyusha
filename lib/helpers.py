@@ -28,10 +28,11 @@ class Helper:
 
 
     @staticmethod
-    def create_prompt(message, option1, option2):
+    def create_prompt(message, option1, option2, option3):
         options = "\n" + message + ":\n" \
                                    "1) " + option1 + "\n" \
                                                      "2) " + option2 + "\n" \
+                                                     "3) " + option3 + "\n" \
                                                                        "Select:"
         return raw_input(options)
 

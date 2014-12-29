@@ -40,7 +40,7 @@ class Fuzzer():
         fuzz_vector = self.get_fuzz_vector()
         for vector in fuzz_vector:
             fuzz_request = self.switch_param(vector)
-            print fuzz_request
+            #print fuzz_request
 
             try:
                 if self.method == 'GET':
@@ -72,27 +72,27 @@ class Fuzzer():
                                    'content-type': r.headers['content-type']
                                },
                                'length': len(r.text)})
-                self.request_id += 1
 
             except:
                 result.append({'request': fuzz_request,
-                               'status': 'error',
+                               'status': False,
                                'method': self.method,
                                'id': self.request_id,
                                'time': response_time,
                                'code': r.status_code,
-                               'response': 'error',
+                               'response': r.text,
                                'headers': {
-                                   'x-powered-by': 'error',
-                                   'set-cookie': 'error',
-                                   'connection': 'error',
-                                   'host': 'error',
-                                   'cache-control': 'error',
-                                   'date': 'error',
-                                   'content-type': 'error'
+                                   'x-powered-by': r.headers['x-powered-by'],
+                                   'set-cookie': r.headers['set-cookie'],
+                                   'connection': r.headers['connection'],
+                                   'host': "error",
+                                   'cache-control': r.headers['cache-control'],
+                                   'date': r.headers['date'],
+                                   'content-type': r.headers['content-type']
                                },
-                               'length': 0})
-                self.request_id += 1
+                               'length': len(r.text)})
+            self.request_id += 1
+            time.sleep(0.2)
 
         # ##Printig params
         print "Fuzzing done..."
@@ -117,19 +117,26 @@ class Fuzzer():
     def save_data(self, result, service_type):
         ts = time.time()
 
-        current_time = datetime.datetime.fromtimestamp(ts).strftime('%Y_%m_%d_%H_%M_%S')
-        self._result_file = service_type + '_result_' + current_time + '.json'
+        try:
+            current_time = datetime.datetime.fromtimestamp(ts).strftime('%Y_%m_%d_%H_%M_%S')
+            self._result_file = service_type + '_result_' + current_time + '.json'
 
-        with open('results/' + self._result_file, 'w') as outfile:
-            json.dump(result, outfile)
+            with open('results/' + self._result_file, 'w') as outfile:
+                json.dump(result, outfile)
+
+            print "Results saved at: 'results/'" + self._result_file
+        except Exception:
+            print "Ooops ! There was a problem with saving results."
 
     def present_results(self):
         while 1:
-            method = Helper.create_prompt('Do you want to view results', 'YES', 'NO')
+            method = Helper.create_prompt('View results', 'YES', 'NO','Quit')
             if method == '1':
                 self.open_results()
             elif method == '2':
                 return 0
+            elif method == '3':
+                Helper.confirm_quit()
 
     def open_results(self):
 
