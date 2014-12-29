@@ -33,22 +33,22 @@
                REST and SOAP fuzzer
         </pre>
 
-        <div ng-repeat="item in data">
+        <div ng-repeat="item in data | orderBy:'time' | orderBy:'length':true  " ng-class="{warnings: item.length > getAvg()}">
 
             <accordion close-others="oneAtATime">
                 <accordion-group is-open=item.status>
                     <accordion-heading>
                         <span>
-                            <span >Id: {{item.id}} </span>
+                            <span>Id: {{item.id}} </span>
                                                         &nbsp;
-                            <span >Length:{{item.length}}</span>
+                            <span>Length:{{item.length}}</span>
                                                         &nbsp;
 
-                            <span >Time:{{item.time}}</span>
+                            <span>Time:{{item.time}}</span>
                                                         &nbsp;
-                            <span >HTTP Code:{{item.code}}</span>
+                            <span>HTTP Code:{{item.code}}</span>
                                                         &nbsp;
-                            <span >Request:{{item.request}}</span>
+                            <span>Request:{{item.request}}</span>
 
                         </span>
                         <i class="pull-right glyphicon"
@@ -72,8 +72,14 @@
                     <div><b>Cache control:</b>{{item.headers ["cache-control"]}}</div>
                     <div><b>Date:</b>{{item.headers.date}}</div>
                     <div><b>Content type:</b>{{item.headers ["content-type"]}}</div>
+                    <h1>SOAP params</h1>
+
+                    <div><b>Content type:</b>{{item.headers ["x-soap-server"]}}</div>
+
                     <h1>Raw response</h1>
+
                     <p>You can view html code by pasting it into : <a href="http://plnkr.co/">Plunker</a></p>
+
                     <div>
                         {{item.response}}
                     </div>

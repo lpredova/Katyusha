@@ -16,9 +16,27 @@ katyusha.controller('MainCtrl', function ($scope, dataProvider) {
     dataProvider.fetch()
         .then(function (data) {
             $scope.data = data;
+
         }, function (err) {
             console.log("jebika")
         })
+
+
+    $scope.getAvg = function(){
+        var no_elements = 1
+        var total = 10;
+        angular.forEach($scope.data, function(value, key) {
+            var len = parseInt(value.length)
+            if (isNaN(len)) {
+                len=0
+            }
+            no_elements++
+            total += len
+        });
+
+        console.log('AVG' + total/no_elements)
+        return total/no_elements
+    }
 
 });
 

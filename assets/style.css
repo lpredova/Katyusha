@@ -1,3 +1,17 @@
 .cookie{
     overflow: scroll;
 }
+
+.warnings{
+    background: red !important;
+    color: red !important;
+}
+
+.warnings .panel-heading{
+    background: #D9534F !important;
+    color: #ffffff !important;
+}
+.warnings .panel-body{
+    background: #F2DEDE !important;
+    color: #000 !important;
+}

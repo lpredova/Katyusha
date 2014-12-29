@@ -7,15 +7,15 @@ import time
 
 __author__ = "Milan"
 
-class SoapFuzzer(Fuzzer):
 
+class SoapFuzzer(Fuzzer):
     _wsdl = ""
     _ops_and_args = {}
     _ops_to_fuzz = {}
 
     def __init__(self):
         Fuzzer.__init__(self)
-        self.method = "POST" # SOAP uses POST
+        self.method = "POST"
 
     def get_ops_and_args(self):
         for service in self._soap_client.services.values():
@@ -46,11 +46,11 @@ class SoapFuzzer(Fuzzer):
                 if fuzz_any_op_arg == 1:
                     self._ops_to_fuzz[operation] = args_to_fuzz
             print
-        #print(self._ops_to_fuzz)
+            # print(self._ops_to_fuzz)
 
     def get_fuzz_vectors(self):
         reader = PayloadReader()
-        #vectors = ["'", "or 1=1", "1'or'1'='1", "admin", "1' and 1=(select count(*) from tablenames); --"] #TODO hardcoded, fix this !!
+        # vectors = ["'", "or 1=1", "1'or'1'='1", "admin", "1' and 1=(select count(*) from tablenames); --"] #TODO hardcoded, fix this !!
         vectors = reader.get_fuzz_strings()
         return vectors
 
@@ -59,7 +59,7 @@ class SoapFuzzer(Fuzzer):
         errors = 0
         fuzz_vectors = self.get_fuzz_vector()
         for operation in self._ops_to_fuzz:
-            print("Fuzzing operation {}...".format(operation)) # remove ?
+            print("Fuzzing operation {}...".format(operation))  # remove ?
             soap_operation = getattr(self._soap_client, str(operation))
             for vector in fuzz_vectors:
                 try:
@@ -68,10 +68,11 @@ class SoapFuzzer(Fuzzer):
                     for arg_name in args.keys():
                         if args[arg_name] == 'Y':
                             kwargs[arg_name] = str(vector)
-                        elif args[arg_name] == 'N' and vector == "'": # TODO dirty fix for "'" parsing; remove in future
+                        elif args[
+                            arg_name] == 'N' and vector == "'":  # TODO dirty fix for "'" parsing; remove in future
                             kwargs[arg_name] = str(vector)
 
-                    print kwargs # TODO remove
+                    print kwargs  # TODO remove
                     start_time = time.time()
                     response = soap_operation(**kwargs)
                     end_time = time.time()
@@ -79,7 +80,7 @@ class SoapFuzzer(Fuzzer):
 
                     result.append({
                         'request': self._soap_client.xml_request,
-                        'status': False, # TODO what does it mean ?
+                        'status': False,
                         'method': self.method,
                         'id': self.request_id,
                         'time': response_time,
@@ -88,20 +89,20 @@ class SoapFuzzer(Fuzzer):
                         'headers': {
                             'x-powered-by': self._soap_client.response['x-powered-by'],
                             'set-cookie': self._soap_client.response['set-cookie'],
-                            'connection': '(unknown)', # isn't available in response
-                            'host (server)': self._soap_client.response['server'], # host = server ?
-                            'x-soap-server': self._soap_client.response['x-soap-server'], # added for soap
+                            'connection': '(unknown)',
+                            'host (server)': self._soap_client.response['server'],
+                            'x-soap-server': self._soap_client.response['x-soap-server'],
                             'cache-control': self._soap_client.response['cache-control'],
                             'date': self._soap_client.response['date'],
                             'content-type': self._soap_client.response['content-type']
                         },
-                        'length (xml response)': self._soap_client.response['content-length']
+                        'length': self._soap_client.response['content-length']
                     })
 
                     self.request_id += 1
 
-                #print(response)
-                #print(self._soap_client.xml_response)
+                # print(response)
+                # print(self._soap_client.xml_response)
                 #print(response_time)
                 #print(self._soap_client.xml_request)
                 #print(self._soap_client.response)
@@ -111,27 +112,27 @@ class SoapFuzzer(Fuzzer):
                     errors += 1
                     print("Error occured for fuzz vector: " + vector)
                     result.append({
-                            'request': self._soap_client.xml_request,
-                            'status': False, # TODO what does it mean ?
-                            'method': self.method,
-                            'id': self.request_id,
-                            'time': 'error',
-                            'code': self._soap_client.response['status'],
-                            'response': 'error',
-                            'headers': {
-                                'x-powered-by': 'error',
-                                'set-cookie': 'error',
-                                'connection': 'error',
-                                'host (server)': 'error',
-                                'x-soap-server': 'error',
-                                'cache-control': 'error',
-                                'date': 'error',
-                                'content-type': 'error'
-                            },
-                            'length (xml response)': 0
-                        })
+                        'request': self._soap_client.xml_request,
+                        'status': False,
+                        'method': self.method,
+                        'id': self.request_id,
+                        'time': 'error',
+                        'code': self._soap_client.response['status'],
+                        'response': 'error',
+                        'headers': {
+                            'x-powered-by':     self._soap_client.response['x-powered-by'],
+                            'set-cookie':       self._soap_client.response['set-cookie'],
+                            'connection':       '(unknown)',
+                            'host (server)':    self._soap_client.response['server'],
+                            'x-soap-server':    self._soap_client.response['x-soap-server'],
+                            'cache-control':    self._soap_client.response['cache-control'],
+                            'date':             self._soap_client.response['date'],
+                            'content-type':     self._soap_client.response['content-type']
+                        },
+                        'length': self._soap_client.response['content-length']
+                    })
                     self.request_id += 1
-        print(result) # TODO remove
+        print(result)  # TODO remove
         print "\nFuzzing done. Errors: %d" % errors
         return result
 
@@ -143,7 +144,7 @@ class SoapFuzzer(Fuzzer):
 
         self._wsdl = raw_input("WSDL URL: ")
         print("Please wait...")
-        self._soap_client = SoapClient(wsdl = self._wsdl)
+        self._soap_client = SoapClient(wsdl=self._wsdl)
 
         self.get_ops_and_args()
         self.get_operations_to_fuzz()
@@ -153,8 +154,7 @@ class SoapFuzzer(Fuzzer):
         self.present_results()
 
 
-
 # just for testing, will be removed in final version
-#sf = SoapFuzzer()
-#sf.start_fuzzing()
+# sf = SoapFuzzer()
+# sf.start_fuzzing()
 
