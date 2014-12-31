@@ -3,7 +3,8 @@ import os
 
 
 class PayloadReader():
-    filePath = "/lib/data/MySQL.fuzz.txt"
+    #filePath = "/lib/data/MySQL.fuzz.txt"
+    filePath = "/lib/data/ws_fuzzer_attacks.txt"
 
     def __init__(self):
         pass

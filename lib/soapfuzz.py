@@ -46,11 +46,9 @@ class SoapFuzzer(Fuzzer):
                 if fuzz_any_op_arg == 1:
                     self._ops_to_fuzz[operation] = args_to_fuzz
             print
-            # print(self._ops_to_fuzz)
 
     def get_fuzz_vectors(self):
         reader = PayloadReader()
-        # vectors = ["'", "or 1=1", "1'or'1'='1", "admin", "1' and 1=(select count(*) from tablenames); --"] #TODO hardcoded, fix this !!
         vectors = reader.get_fuzz_strings()
         return vectors
 
@@ -59,7 +57,7 @@ class SoapFuzzer(Fuzzer):
         errors = 0
         fuzz_vectors = self.get_fuzz_vector()
         for operation in self._ops_to_fuzz:
-            print("Fuzzing operation {}...".format(operation))  # remove ?
+            print("Fuzzing operation {}...".format(operation))
             soap_operation = getattr(self._soap_client, str(operation))
             for vector in fuzz_vectors:
                 try:
@@ -72,7 +70,6 @@ class SoapFuzzer(Fuzzer):
                             arg_name] == 'N' and vector == "'":  # TODO dirty fix for "'" parsing; remove in future
                             kwargs[arg_name] = str(vector)
 
-                    print kwargs  # TODO remove
                     start_time = time.time()
                     response = soap_operation(**kwargs)
                     end_time = time.time()
@@ -101,13 +98,6 @@ class SoapFuzzer(Fuzzer):
 
                     self.request_id += 1
 
-                # print(response)
-                # print(self._soap_client.xml_response)
-                #print(response_time)
-                #print(self._soap_client.xml_request)
-                #print(self._soap_client.response)
-                #print
-
                 except:
                     errors += 1
                     print("Error occured for fuzz vector: " + vector)
@@ -132,7 +122,7 @@ class SoapFuzzer(Fuzzer):
                         'length': self._soap_client.response['content-length']
                     })
                     self.request_id += 1
-        print(result)  # TODO remove
+
         print "\nFuzzing done. Errors: %d" % errors
         return result
 
@@ -152,9 +142,3 @@ class SoapFuzzer(Fuzzer):
 
         self.save_data(results, "soap")
         self.present_results()
-
-
-# just for testing, will be removed in final version
-# sf = SoapFuzzer()
-# sf.start_fuzzing()
-
