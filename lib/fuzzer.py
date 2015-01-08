@@ -92,7 +92,7 @@ class Fuzzer():
                                },
                                'length': len(r.text)})
             self.request_id += 1
-            time.sleep(0.2)
+            time.sleep(0.01)
 
         # ##Printig params
         print "Fuzzing done..."
@@ -140,13 +140,13 @@ class Fuzzer():
 
     def open_results(self):
 
-        print 'Find results at:\n' + 'http://localhost:8080/#/' + self._result_file
+        print 'Find results at:\n' + 'http://localhost:8088/#/' + self._result_file
 
         server = Server()
         threading.Thread(target=server.serve()).start()
 
         try:
-            webbrowser.open('http://localhost:8080/#/' + self._result_file, 2)
+            webbrowser.open('http://localhost:8088/#/' + self._result_file, 2)
         except:
-            print 'Find results at:\n http://localhost:8080/#/' + self._result_file
+            print 'Find results at:\n http://localhost:8088/#/' + self._result_file
             return 0

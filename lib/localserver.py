@@ -8,7 +8,7 @@ import socket
 
 class Server(object):
 
-    _PORT = 8080
+    _PORT = 8088
     _instance = None
 
     def __init__(self):
@@ -37,7 +37,7 @@ class Server(object):
             print "running localhost server..."
             handler = SimpleHTTPServer.SimpleHTTPRequestHandler
             httpd = SocketServer.TCPServer(("", self._PORT), handler)
-            print "I'm listening....on 8080"
+            print "I'm listening....on" + str(self._PORT)
             httpd.serve_forever()
         else:
             return 0
