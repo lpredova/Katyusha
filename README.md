@@ -3,26 +3,27 @@
 ## Synopsis
 
 
-Katyusha is simple **REST and SOAP API fuzzer**.  It's straightforward,lightweight and written in Python and Angular JS.  
-Wiki page of the project  (croatian) : http://security.foi.hr/wiki/index.php/Fuzzing_web_servisa_(REST_i_SOAP)
+Katyusha is simple **REST and SOAP API fuzzer**.
 
-This web API fuzzer is made as project asignment for SIS (Security of information systems at FOI http://security.foi.hr/wiki/index.php/Glavna_stranica).
+It's straightforward,lightweight and written in Python and Angular JS.  
+Wiki page of the project (cro): http://security.foi.hr/wiki/index.php/Fuzzing_web_servisa_(REST_i_SOAP) .
 
 We tried to make it as straightforwad as it can be. Just follow the instructions and you'll get where you want to be.
+
+This web API fuzzer is made as project asignment for SIS - Security of information systems at FOI http://security.foi.hr/wiki/index.php/Glavna_stranica .
+
 
 ## Installation
 
 Dependencies:
 
-*Pysimpesoap - https://code.google.com/p/pysimplesoap/
-*Requests - http://docs.python-requests.org/en/latest/
- 
-Also thanks to :
-*Fuzz db - https://code.google.com/p/fuzzdb/
+*   Pysimpesoap - https://code.google.com/p/pysimplesoap/
+*   Requests - http://docs.python-requests.org/en/latest/
+*   Fuzz db - https://code.google.com/p/fuzzdb/
 
 ## Example
 
-Before runnig the code please check that you have installed dependancies listed below.  In bash run:
+Before runing the code please check that you have installed dependancies listed below.  In bash run:
 
 ```python
 python main.py
