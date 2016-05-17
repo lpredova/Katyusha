@@ -19,7 +19,7 @@ Dependencies:
 
 *   Pysimpesoap - https://code.google.com/p/pysimplesoap/
 *   Requests - http://docs.python-requests.org/en/latest/
-*   Fuzz db - https://code.google.com/p/fuzzdb/
+*   Fuzz db - https://github.com/fuzzdb-project/fuzzdb
 
 ## Example
 
